@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VIRAL VIDEO LINK</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prime Viral</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-<div id="loader"><div class="ring"></div><h2>VIRAL <span>VIDEO LINK</span></h2><p>তথ্য লোড হচ্ছে...</p></div>
-<div id="ageGate"><div class="ageBox"><div class="icon">👤</div><h3>18+ Confirmation</h3><p>এই সাইটে প্রাপ্তবয়স্ক কন্টেন্ট থাকতে পারে।</p><div class="check">✓ আমি নিশ্চিত করছি আমার বয়স ১৮+</div><div class="check">🔒 ১৮+ ছাড়া প্রবেশ নিষেধ</div><div class="check">📜 Telegram নিয়ম মেনে</div><div class="btns"><button id="yes18">হ্যাঁ, আমার বয়স ১৮+</button><button id="no18">না</button></div></div></div>
-<header><span>VIRAL</span> VIDEO LINK</header>
-<div class="tabs"><button class="active">সব ভিডিও</button><button>ভাইরাল</button></div>
-<div class="cats"><button class="active">সব ভিডিও</button><button>ভাবি</button><button>বাংলা</button><button>ভাইরাল</button><button>ভিডিও</button><button>ভাগ্নী</button><button>ভাই বোন</button><button>মা ছেলে</button><button>বাংলাদেশি</button><button>গার্লফ্রেন্ড</button></div>
-<div class="secHead"><h4>Latest Videos</h4><button>ভিডিও দেখার নিয়ম</button></div>
-<div id="grid" class="grid"></div>
-<nav class="bottom"><button class="active">🏠 হোম</button><button id="goProfile">👤 প্রোফাইল</button></nav>
-<div id="profilePage"><div class="pHead"><button id="backHome">← Back</button> VIRAL VIDEO LINK</div><div class="owner"><div class="av"></div><div><b>OWNER JAHANGIR VAI</b><p></p><p
-id="userUsername">@JAHANGIR_07K</p></div></div><div class="stats"><div><h2>0</h2><p>আজকের পয়েন্ট</p></div><div><h2>0</h2><p>মোট রেফারেল</p></div></div><div class="ref"><p>আপনার রেফারেল লিংক</p><input value="https://t.me/viral_video_link_bot?startapp=ref_REF825003569" readonly><div class="refBtns"><button>লিংক কপি</button><button>শেয়ার</button></div></div></div>
-<script src="app.js"></script>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<div>✓ আমি নিশ্চিত করছি আমার বয়স ১৮+</div>
+<div><button>ভাগ্নী</button><button>ভাই বোন</button></div>
+
+<div style="display:flex;gap:10px;margin-top:20px;background:#222;padding:10px;border-radius:10px">
+<img id="userPhoto" src="" width="45" height="45" style="border-radius:50%">
+<div>
+<b id="userName">OWNER JAHANGIR VAI</b>
+<p id="userUsername">@JAHANGIR_07K</p>
+</div>
+</div>
+
 <script>
 const tg = window.Telegram.WebApp;
 tg.ready();
+tg.expand();
 const user = tg.initDataUnsafe.user;
 if(user){
-  document.getElementById('userName').innerText = (user.first_name + " " + (user.last_name||"")).trim();
-  document.getElementById('userUsername').innerText = user.username ? "@"+user.username : "ID: "+user.id;
+  document.getElementById('userName').innerText = user.first_name + ' ' + (user.last_name||'');
+  document.getElementById('userUsername').innerText = user.username ? '@'+user.username : 'ID:'+user.id;
+  if(user.photo_url) document.getElementById('userPhoto').src = user.photo_url;
 }
 </script>
 </body>
