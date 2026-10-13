@@ -1,33 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prime Viral</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIRAL VIDEO LINK</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+body{background:#0a0a0a;color:#fff;font-family:sans-serif;padding:15px;margin:0}
+.header{text-align:center;padding:10px;font-size:12px;color:#aaa}
+.age{background:#1f1f1f;padding:12px;border-radius:10px;text-align:center;margin:10px 0;border:1px solid #333}
+.cats{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:15px 0}
+.cats button{background:#2a2a2a;color:#fff;border:1px solid #444;padding:8px 16px;border-radius:20px}
+.card{background:#1e1e1e;border-radius:15px;padding:15px;display:flex;align-items:center;gap:12px;margin-top:20px}
+.card img{width:50px;height:50px;border-radius:50%;background:#333}
+.card b{display:block;font-size:16px}
+.card p{margin:3px 0 0;color:#888;font-size:13px}
+.link-box{background:#1e1e1e;padding:12px;border-radius:10px;margin-top:15px;word-break:break-all;font-size:12px;color:#aaa}
+</style>
 </head>
 <body>
-<div>✓ আমি নিশ্চিত করছি আমার বয়স ১৮+</div>
-<div><button>ভাগ্নী</button><button>ভাই বোন</button></div>
 
-<div style="display:flex;gap:10px;margin-top:20px;background:#222;padding:10px;border-radius:10px">
-<img id="userPhoto" src="" width="45" height="45" style="border-radius:50%">
+<div class="header">VIRAL VIDEO LINK - mini app</div>
+
+<div class="age">✓ আমি নিশ্চিত করছি আমার বয়স ১৮+ এবং আমি নিয়ম মেনে ভিডিও দেখবো</div>
+
+<div class="cats">
+<button>ভাগ্নী</button>
+<button>ভাই বোন</button>
+<button>ভাবি</button>
+<button>ভাইরাল</button>
+<button>লিংক</button>
+<button>নতুন</button>
+</div>
+
+<div class="card">
+<img id="userPhoto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
 <div>
-<b id="userName">OWNER JAHANGIR VAI</b>
-<p id="userUsername">@JAHANGIR_07K</p>
+<b id="userName">Loading...</b>
+<p id="userUsername">@loading</p>
 </div>
 </div>
+
+<div class="link-box" id="refBox">তোমার রেফার লিংক লোড হচ্ছে...</div>
 
 <script>
 const tg = window.Telegram.WebApp;
 tg.ready();
 tg.expand();
-const user = tg.initDataUnsafe.user;
+const user = tg.initDataUnsafe?.user;
 if(user){
-  document.getElementById('userName').innerText = user.first_name + ' ' + (user.last_name||'');
-  document.getElementById('userUsername').innerText = user.username ? '@'+user.username : 'ID:'+user.id;
+  const name = (user.first_name || '') + ' ' + (user.last_name || '');
+  document.getElementById('userName').innerText = name.trim();
+  document.getElementById('userUsername').innerText = user.username ? '@'+user.username : 'ID: '+user.id;
   if(user.photo_url) document.getElementById('userPhoto').src = user.photo_url;
+  document.getElementById('refBox').innerText = 'https://t.me/viralvideolink07_bot?startapp=ref_' + user.id;
+} else {
+  document.getElementById('userName').innerText = 'Guest User';
 }
 </script>
+
 </body>
 </html>
