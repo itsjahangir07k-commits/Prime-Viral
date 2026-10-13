@@ -3,61 +3,126 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VIRAL VIDEO LINK</title>
+<title>Prime Scene</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
-body{background:#0a0a0a;color:#fff;font-family:sans-serif;padding:15px;margin:0}
-.header{text-align:center;padding:10px;font-size:12px;color:#aaa}
-.age{background:#1f1f1f;padding:12px;border-radius:10px;text-align:center;margin:10px 0;border:1px solid #333}
-.cats{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:15px 0}
-.cats button{background:#2a2a2a;color:#fff;border:1px solid #444;padding:8px 16px;border-radius:20px}
-.card{background:#1e1e1e;border-radius:15px;padding:15px;display:flex;align-items:center;gap:12px;margin-top:20px}
-.card img{width:50px;height:50px;border-radius:50%;background:#333}
-.card b{display:block;font-size:16px}
-.card p{margin:3px 0 0;color:#888;font-size:13px}
-.link-box{background:#1e1e1e;padding:12px;border-radius:10px;margin-top:15px;word-break:break-all;font-size:12px;color:#aaa}
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+body{background:#0a0e1a;color:#fff;min-height:100vh}
+.top{padding:12px 15px;display:flex;justify-content:space-between;align-items:center;background:#111528}
+.logo{font-weight:800;font-size:18px} .logo span{background:#4f46e5;padding:2px 8px;border-radius:6px;margin-left:5px}
+.splash{position:fixed;inset:0;background:#0a0e1a;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:999}
+.splash-logo{width:80px;height:80px;background:linear-gradient(135deg,#ff5a5a,#5a5aff,#ffaa5a);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:35px}
+.splash h2{margin-top:15px} .splash h2 span{background:#4f46e5;padding:2px 8px;border-radius:6px}
+.bar{height:3px;width:150px;background:#222;border-radius:10px;margin-top:15px;overflow:hidden}
+.bar div{height:100%;width:60%;background:#4f46e5;animation:load 1.5s infinite}
+@keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(200%)}}
+.pills{display:flex;gap:8px;flex-wrap:wrap;padding:12px}
+.pills button{background:#1c223a;border:1px solid #2a325a;color:#aab;padding:7px 14px;border-radius:20px;font-size:13px}
+.pills button.active{background:#4f46e5;color:#fff}
+.card{margin:12px;background:#151a2e;border-radius:15px;padding:12px}
+.card-top{display:flex;justify-content:space-between;align-items:center}
+.btn-watch{background:linear-gradient(90deg,#4f46e5,#7c3aed);border:none;color:#fff;padding:10px;border-radius:10px;width:100%;margin-top:10px;font-weight:600}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}
+.vbox{background:#151a2e;border-radius:12px;overflow:hidden}
+.vbox img{width:100%;height:110px;object-fit:cover;background:#222}
+.vbox p{padding:6px;font-size:11px;color:#ccc}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#111528;display:flex;justify-content:space-around;padding:8px 0;border-top:1px solid #222}
+.bottom div{text-align:center;font-size:11px;color:#888} .bottom div.active{color:#4f46e5}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;justify-content:center;align-items:center;z-index:100}
+.modal-box{background:#1e2442;width:90%;max-width:320px;border-radius:20px;padding:20px;text-align:center}
+.modal-box button{padding:10px 15px;border-radius:10px;border:none;margin:5px;font-size:13px}
+.yes{background:#4f46e5;color:#fff} .no{background:#2a325a;color:#ccc}
+.profile{background:linear-gradient(135deg,#1e2442,#2a2d5a);border-radius:15px;padding:15px;margin:12px}
+.profile b{display:block} .profile p{font-size:13px;color:#aaa}
+.ref{background:#0f1324;padding:10px;border-radius:10px;margin-top:10px;font-size:11px;word-break:break-all;color:#777}
 </style>
 </head>
 <body>
 
-<div class="header">VIRAL VIDEO LINK - mini app</div>
+<div id="splash" class="splash">
+<div class="splash-logo">📹</div>
+<h2>Prime <span>Scene</span></h2>
+<p style="font-size:12px;color:#888;margin-top:5px">নীল ছবি ও ভিডিও প্ল্যাটফর্ম</p>
+<div class="bar"><div></div></div>
+</div>
 
-<div class="age">✓ আমি নিশ্চিত করছি আমার বয়স ১৮+ এবং আমি নিয়ম মেনে ভিডিও দেখবো</div>
+<div id="ageModal" class="modal" style="display:none">
+<div class="modal-box">
+<div style="font-size:30px">🔞</div>
+<h3 style="margin:10px 0">এডাল্ট জোন নিশ্চিতকরণ</h3>
+<p style="font-size:12px;color:#aaa">এই সেকশনে এডাল্ট কনটেন্ট আছে। একটি ক্লিক করলেই আপনি নিশ্চিত করছেন আপনার বয়স ১৮+ এবং আপনি এই ধরনের কনটেন্ট দেখতে ইচ্ছুক।</p>
+<div style="background:#151a2e;padding:8px;border-radius:8px;margin:10px 0;font-size:12px">আমি নিশ্চিত করছি আমার বয়স ১৮ বা তার বেশি</div>
+<div style="background:#151a2e;padding:8px;border-radius:8px;margin:10px 0;font-size:12px">এই অনুমতি শুধু এই সেশনের জন্য মনে রাখা হবে</div>
+<button class="yes" onclick="closeAge()">হ্যাঁ, প্রবেশ করুন</button>
+<button class="no" onclick="closeAge()">না, ফিরে যান</button>
+</div>
+</div>
 
-<div class="cats">
-<button>ভাগ্নী</button>
-<button>ভাই বোন</button>
-<button>ভাবি</button>
-<button>ভাইরাল</button>
-<button>লিংক</button>
-<button>নতুন</button>
+<div class="top"><div class="logo">Prime <span>Scene</span></div><div>☰</div></div>
+
+<div class="pills">
+<button class="active">সব একসাথে</button>
+<button>বাবা মেয়ে</button>
+<button>ছোট বোন</button>
+<button>চাচাতো ভিডিও</button>
+<button>নতুন ভাইরাল ভিডিও</button>
+<button>টিকটক ভাইরাল ভিডিও</button>
+<button>মা বোন</button>
+<button>জামাই ভিডিও</button>
+<button>বাংলা ভিডিও</button>
+<button>খালাতো বোন ভিডিও</button>
+<button>রোমান্টিক ভিডিও</button>
+<button>ইসলাম ভাইরাল ভিডিও</button>
 </div>
 
 <div class="card">
-<img id="userPhoto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
-<div>
-<b id="userName">Loading...</b>
-<p id="userUsername">@loading</p>
-</div>
+<div class="card-top"><div>সিনেমা লাইব্রেরি</div><div style="font-size:12px">5 ভিডিও</div></div>
+<p style="font-size:11px;color:#888;margin-top:5px">মুভি, ওয়েব সিরিজ এবং ভিডিও এডিটিং টিউটোরিয়াল সহ সবকিছু।</p>
+<button class="btn-watch">▶ ভিডিও দেখুন</button>
 </div>
 
-<div class="link-box" id="refBox">তোমার রেফার লিংক লোড হচ্ছে...</div>
+<div class="grid">
+<div class="vbox"><img src=""><p>এক মায়ের সাথে তার ছেলে ও ১৮+...</p></div>
+<div class="vbox"><img src=""><p>রাতের বেলা করার মতো...</p></div>
+</div>
+
+<div id="userPage" class="profile">
+<div style="display:flex;gap:12px;align-items:center">
+<img id="userPhoto" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" style="width:50px;height:50px;border-radius:50%">
+<div>
+<b id="userName">OWNER JAHANGIR VAI</b>
+<p id="userUsername">@JAHANGIR_07K</p>
+</div>
+</div>
+<div style="display:flex;gap:20px;margin-top:15px">
+<div><b>0</b><p>আমার পয়েন্ট</p></div>
+<div><b>0</b><p>মোট রেফার</p></div>
+</div>
+<div style="margin-top:10px;font-size:13px">রেফারেল কোড: <b id="refCode">8257005369</b></div>
+<div id="refLink" class="ref">https://t.me/viralvideolink07_bot?startapp=ref_8257005369</div>
+</div>
+
+<div class="bottom">
+<div>মুভি</div><div>সিরিজ</div><div class="active">এডাল্ট</div><div>ইউজার</div>
+</div>
 
 <script>
+// Splash 2 sec
+setTimeout(()=>{document.getElementById('splash').style.display='none';document.getElementById('ageModal').style.display='flex'},1500);
+function closeAge(){document.getElementById('ageModal').style.display='none'}
+
+// Dynamic User - MAIN FIX
 const tg = window.Telegram.WebApp;
-tg.ready();
-tg.expand();
+tg.ready(); tg.expand();
 const user = tg.initDataUnsafe?.user;
 if(user){
-  const name = (user.first_name || '') + ' ' + (user.last_name || '');
-  document.getElementById('userName').innerText = name.trim();
+  const fullName = (user.first_name||'') + ' ' + (user.last_name||'');
+  document.getElementById('userName').innerText = fullName.trim() || 'User';
   document.getElementById('userUsername').innerText = user.username ? '@'+user.username : 'ID: '+user.id;
+  document.getElementById('refCode').innerText = user.id;
+  document.getElementById('refLink').innerText = 'https://t.me/viralvideolink07_bot?startapp=ref_' + user.id;
   if(user.photo_url) document.getElementById('userPhoto').src = user.photo_url;
-  document.getElementById('refBox').innerText = 'https://t.me/viralvideolink07_bot?startapp=ref_' + user.id;
-} else {
-  document.getElementById('userName').innerText = 'Guest User';
 }
 </script>
-
 </body>
 </html>
