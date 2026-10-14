@@ -5,7 +5,8 @@ const vids=[
  {title:"বাংলাদেশি ভাইরাল লিংক ২০২৪", category:"ভাইরাল ভিডিও", img:"https://picsum.photos/400/300?3", time:"2:45", link:"https://t.me/viralvideolink07/4"},
  {title:"ভাই বোন ভাইরাল ভিডিও", category:"ছোট বোন", img:"https://picsum.photos/400/300?4", time:"6:10", link:"https://t.me/viralvideolink07/5"},
  {title:"ভাইরাল ভিডিও লিংক - ভাবি", category:"ভাইরাল ভিডিও", img:"https://picsum.photos/400/300?5", time:"4:20", link:"https://t.me/viralvideolink07/6"},
- {title:"গার্লফ্রেন্ড ভাইরাল ভিডিও", category:"বাবা মেয়ে", img:"https://picsum.photos/400/300?6", time:"2:10", link:"https://t.me/viralvideolink07/7"},
+  {title:"গার্লফ্রেন্ড ভাইরাল ভিডিও"...},
+ {title:"নতুন ভাইরাল ভিডিও", category:"ভাইরাল ভিডিও", img:"https://picsum.photos/400/300?99", time:"4:11", link:"https://t.me/viralvideolink07/99"},
 ];
 
 let currentCat = "সব একসাথে";
