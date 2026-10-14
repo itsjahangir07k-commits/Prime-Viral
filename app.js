@@ -35,22 +35,39 @@ window.openVideo = function(index){
       <button onclick="document.getElementById('videoModal').remove()" style="margin-top:10px;background:none;border:0;color:#666">Close</button>
     </div>`;
   document.body.appendChild(modal);
-  document.getElementById('step1').onclick=()=>{
-    document.getElementById('step1').innerText="Loading...";
-    setTimeout(()=>{
-      document.getElementById('step1').innerText="✅ Ad শেষ";
-      document.getElementById('step1').style.background="#00ff88";
-      let s2=document.getElementById('step2'); s2.disabled=false; s2.style.background="#1a223e"; s2.style.color="#fff";
-      s2.onclick=()=>{
-        window.open("https://t.me/viralvideolink07","_blank");
-        s2.innerText="✅ Join Done"; s2.style.background="#00ff88"; s2.style.color="#000";
-        let s3=document.getElementById('step3'); s3.disabled=false; s3.style.background="linear-gradient(90deg,#00ff88,#00ccff)"; s3.style.color="#000";
-        s3.onclick=()=>{ window.open(v.link,"_blank"); document.getElementById('videoModal').remove(); }
-      }
-    },3000);
-  }
+  document.getElementById('
+// --- BOT LINK SYSTEM - NEW ---
+let botIdToSend = `video_${index + 1}`;
+const urlParams = new URLSearchParams(window.location.search);
+if(urlParams.get('v')){
+  botIdToSend = urlParams.get('v');
 }
+let finalBotLink = `https://t.me/prime_vplayer_bot?start=${botIdToSend}`;
 
+document.getElementById('step1').onclick=()=>{
+  document.getElementById('step1').innerText="Loading...";
+  setTimeout(()=>{
+    document.getElementById('step1').innerText="✅ Ad শেষ";
+    document.getElementById('step1').style.background="#00ff88";
+    let s2=document.getElementById('step2'); s2.disabled=false; s2.style.background="#2ea6ff";
+    s2.onclick=()=>{
+      s2.innerText="Loading...";
+      setTimeout(()=>{
+        s2.innerText="✅ Ad শেষ";
+        s2.style.background="#00ff88"; s2.style.color="#000";
+        let s3=document.getElementById('step3'); s3.disabled=false; s3.style.background="#2ea6ff";
+        s3.onclick=()=>{
+          // --- FINAL STEP - BOT এ পাঠাবে ---
+          if(window.Telegram && Telegram.WebApp){
+            Telegram.WebApp.openTelegramLink(finalBotLink);
+          } else {
+            window.open(finalBotLink, "_blank");
+          }
+        }
+      },1500);
+    }
+  },1000);
+}
 setTimeout(()=>{let l=document.getElementById('loader'); if(l) l.style.display='none'; let a=document.getElementById('ageGate'); if(a) a.style.display='flex'},800);
 let y=document.getElementById('yes18'); if(y) y.onclick=()=>{document.getElementById('ageGate').style.display='none'};
 let n=document.getElementById('no18'); if(n) n.onclick=()=>{window.Telegram.WebApp.close()};
