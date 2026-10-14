@@ -1,1 +1,73 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin</title><style>body{background:#111;color:#fff;padding:20px;font-family:sans-serif}input,select{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:0}button{width:100%;padding:14px;background:#ff0066;color:#fff;border:0;border-radius:8px;font-weight:bold}</style></head><body><div id="login"><h2>Admin Login</h2><input id="pass" placeholder="Password"><button onclick="if(document.getElementById('pass').value==='JAHANGIR123'){document.getElementById('login').style.display='none';document.getElementById('panel').style.display='block'}else alert('Wrong')">Login</button></div><div id="panel" style="display:none"><h2>Add Video</h2><input id="title" placeholder="Title"><input id="thumb" placeholder="Thumbnail Link"><input id="link" placeholder="Video Link"><select id="cat"><option>সব</option><option>ভাইরাল</option><option>বাবা মেয়ে</option></select><button onclick="let v={title:title.value,thumb:thumb.value,link:link.value,cat:cat.value};let a=JSON.parse(localStorage.getItem('prime_videos')||'[]');a.unshift(v);localStorage.setItem('prime_videos',JSON.stringify(a));alert('Added')">Add Video</button></div></body></html>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prime Viral - Admin Panel</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:system-ui;background:#0a0a0a;color:#fff;padding:16px;margin:0}
+h2{color:#ff0055;text-align:center}
+.card{background:#1a1a1a;padding:16px;border-radius:14px;margin-top:15px;border:1px solid #222}
+input,select{width:100%;padding:13px;margin:7px 0;border-radius:10px;border:1px solid #333;background:#222;color:#fff;font-size:15px}
+button{width:100%;padding:13px;margin-top:10px;border-radius:10px;border:none;background:#ff0055;color:#fff;font-weight:800;font-size:16px}
+textarea{width:100%;height:130px;background:#111;color:#0f0;padding:10px;border-radius:10px;border:1px solid #333;margin-top:10px;font-size:13px}
+.small{font-size:12px;color:#888;text-align:center;margin-top:10px}
+</style>
+</head>
+<body>
+<h2>🎬 Prime Viral Admin</h2>
+
+<div class="card">
+<label>ভিডিওর Title</label>
+<input id="title" placeholder="যেমন: Prince Movie Full HD">
+
+<label>Category</label>
+<select id="cat">
+<option>ভাইরাল ভিডিও</option>
+<option>মুভি</option>
+<option>নাটক</option>
+<option>ভাইরাল লিংক</option>
+</select>
+
+<label>Telegram ভিডিও লিংক</label>
+<input id="link" placeholder="https://t.me/viralvideolink07/10">
+
+<label>Thumbnail লিংক (না দিলে অটো আসবে)</label>
+<input id="img" placeholder="https://...">
+
+<label>সময়</label>
+<input id="time" placeholder="যেমন: 2:15:00" value="0:25">
+
+<button onclick="generate()">✅ কোড বানাও</button>
+
+<textarea id="output" placeholder="এখানে কোড আসবে..."></textarea>
+<button onclick="copyCode()" style="background:#222;border:1px solid #444">📋 কপি করো</button>
+
+<div class="small">কপি করে app.js এ গিয়ে সবার উপরে পেস্ট করো, তারপর Commit দাও</div>
+</div>
+
+<script>
+function generate(){
+ let t = document.getElementById('title').value.trim();
+ let c = document.getElementById('cat').value;
+ let l = document.getElementById('link').value.trim();
+ let i = document.getElementById('img').value.trim();
+ let tm = document.getElementById('time').value.trim() || '0:25';
+ 
+ if(!t || !l){ alert('Title আর Telegram Link দিতেই হবে ভাই!'); return; }
+ if(!i){ i = 'https://picsum.photos/seed/'+Math.floor(Math.random()*1000)+'/400/300'; }
+ 
+ let code = `{title:"${t}", category:"${c}", img:"${i}", time:"${tm}", link:"${l}"},`;
+ document.getElementById('output').value = code;
+}
+function copyCode(){
+ let o = document.getElementById('output');
+ if(!o.value){ alert('আগে কোড বানাও'); return; }
+ o.select();
+ document.execCommand('copy');
+ alert('✅ কপি হয়ে গেছে! এখন app.js এ পেস্ট করো');
+}
+</script>
+</body>
+</html>
