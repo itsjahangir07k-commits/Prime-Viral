@@ -62,6 +62,10 @@ document.getElementById('step1').onclick=()=>{
             Telegram.WebApp.openTelegramLink(finalBotLink);
           } else {
             window.open(finalBotLink, "_blank");
+    
+          
+     {title:"নতুন ভিডিও", category:"ভাইরাল লিংক", img:"https://picsum.photos/seed/902/400/300", time:"0:25", link:"https://t.me/prime_vplayer_bot?start=video_8"},     
+          
           }
         }
       },1500);
