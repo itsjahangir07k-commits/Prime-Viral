@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
+
+  // তুমি এখানে নতুন ভিডিও এড করবে
+const videoList = [
+  { msg_id: 61, title: "Viral Video 1" },
+  { msg_id: 62, title: "Viral Video 2" },
+  { msg_id: 63, title: "Viral Video 3" }
+];
+
+// ইউজার যখন ক্লিক করবে
+function onVideoClick(msg_id) {
+  // 1. প্রথমে 3-4 টা Adsgram / Monetag এড দেখাবে
+  showAd().then(() => {
+    showAd().then(() => {
+      showAd().then(() => {
+        // 2. এড শেষ হলে Download বাটন
+        document.getElementById('downloadBtn').onclick = () => {
+          // 3. prime_vplayer_bot এ নিয়ে যাবে
+          Telegram.WebApp.openTelegramLink(`https://t.me/prime_vplayer_bot?start=video_${msg_id}`);
+        }
+      })
+    })
+  })
+}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VIRAL VIDEO LINK</title>
