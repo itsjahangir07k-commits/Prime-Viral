@@ -3,130 +3,151 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prime Scene</title>
+<title>Prime Scene - Viral Video Link</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://sad.adsgram.ai/js/sad.min.js"></script>
 <style>
-body{background:#0a0e1a;color:#fff;font-family:system-ui;margin:0;padding-bottom:80px}
-.top{display:flex;justify-content:space-between;align-items:center;padding:12px;background:#0a0e1a}
-.card{background:#141a2e;border:1px solid #222a4a;border-radius:20px;padding:16px;margin:12px}
-.chip{display:inline-block;background:#1a223e;padding:8px 14px;border-radius:20px;margin:4px;font-size:13px}
-.btn-main{background:linear-gradient(90deg,#4f46e5,#7c3aed);color:#fff;width:100%;padding:12px;border-radius:12px;border:none;font-weight:bold}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:#111528;display:flex;justify-content:space-around;padding:10px 0 14px 0;border-top:1px solid #2a325a;z-index:100}
-.bottom button{background:none;border:none;color:#6b7280;text-align:center;font-size:12px;line-height:16px}
-.bottom button.active{color:#fff;background:#1c223a;padding:6px 18px;border-radius:12px}
-.section{display:none} .section.active{display:block}
-#ageModal{position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:200}
-#ageBox{background:#1a223e;padding:24px;border-radius:20px;width:85%;text-align:center}
+  body { margin:0; background:#0a0e1a; color:white; font-family: sans-serif; }
+  .page { display:none; min-height:100vh; padding:20px; }
+  .active { display:block; }
+  .hero { background: linear-gradient(135deg,#6d28d9,#4c1d95); border-radius:20px; padding:20px; margin-top:20px; }
+  .chip { background:#1e293b; padding:8px 16px; border-radius:20px; margin:5px; display:inline-block; cursor:pointer; }
+  .chip.active-chip { background:#e11d48; }
+  .video-card { background:#111a2e; border-radius:15px; padding:10px; margin:10px 0; display:flex; gap:10px; }
+  .video-thumb { width:90px; height:60px; background:#2a3655; border-radius:10px; }
+  .btn-purple { background:#7c3aed; width:100%; padding:14px; border-radius:12px; border:none; color:white; font-weight:bold; font-size:16px; }
+  .bottom-nav { position:fixed; bottom:0; left:0; right:0; background:#111a2e; display:flex; justify-content:space-around; padding:12px; border-radius:20px 20px 0 0; }
+  .nav-item { text-align:center; opacity:0.6; cursor:pointer; }
+  .nav-item.active-nav { opacity:1; color:#7c3aed; }
 </style>
 </head>
 <body>
 
-<div class="top"><b>Prime Scene</b><span>🔍</span></div>
-
-<!-- MOVIE SECTION -->
-<div id="sec-movie" class="section active">
-  <div class="card">
-    <span class="chip" style="background:#4f46e5">নতুন মুভি</span> <span class="chip">বক্স অফিস</span>
-    <div style="margin-top:12px;display:flex;justify-content:space-between">
-      <b>সিনেমা লাইব্রেরি</b><span>5 ভিডিও</span>
-    </div>
-    <button class="btn-main" style="margin-top:10px">সিনেমা দেখুন</button>
-  </div>
-  <div class="card">🎬 Prince মুভি এখানে আসবে</div>
-</div>
-
-<!-- SERIES SECTION -->
-<div id="sec-series" class="section">
-  <div class="card">
-    <span class="chip" style="background:#4f46e5">সিরিজ</span> <span class="chip">নতুন সিরিজ</span>
-    <div style="margin-top:12px"><b>সিরিজ লাইব্রেরি</b></div>
-    <button class="btn-main" style="margin-top:10px">সিরিজ দেখুন</button>
-  </div>
-  <div class="card">📺 Bachelor Point Season 5</div>
-</div>
-
-<!-- ADULT SECTION -->
-<div id="sec-adult" class="section">
-  <div class="card">
-    <span class="chip" style="background:#ff4d6d">এডাল্ট</span>
-    <div style="display:flex;flex-wrap:wrap;margin-top:10px">
-      <span class="chip">সব একসাথে</span><span class="chip">বাংলাদেশি ভিডিও</span><span class="chip">ভাইরাল ভিডিও</span><span class="chip">বাবা মেয়ে</span><span class="chip">ছোট বোন</span>
-    </div>
-  </div>
-  <div class="card">
-    <div style="display:flex;justify-content:space-between"><span>একটি রোজ</span><span>163 ভিডিও</span></div>
-    <b>এডাল্ট লাইব্রেরি</b>
-    <button class="btn-main" style="margin-top:10px">ভিডিও দেখুন</button>
+<!-- Page 1: Splash + 18+ -->
+<div id="p1" class="page active" style="text-align:center; padding-top:100px;">
+  <h1>Prime Scene</h1>
+  <p>VIRAL VIDEO LINK mini app</p>
+  <div style="margin-top:50px; background:#111a2e; padding:20px; border-radius:15px;">
+    <h3>⚠️ 18+ Confirmation</h3>
+    <p>এই অ্যাপে 18+ কন্টেন্ট আছে। আপনি কি 18+?</p>
+    <button class="btn-purple" onclick="showPage('p2')">হ্যাঁ, আমি 18+</button>
   </div>
 </div>
 
-<!-- USER SECTION -->
-<div id="sec-user" class="section">
-  <div class="card" id="userPage">
-    <div style="display:flex;gap:12px;align-items:center">
-      <img id="userPhoto" src="" style="width:60px;height:60px;border-radius:50%;background:#333">
-      <div>
-        <b id="userName">Loading...</b><br>
-        <small id="userUsername">@username</small><br>
-        <small>রেফারেন্স আইডি: <span id="refId">...</span></small>
-      </div>
-    </div>
-    <div style="margin-top:16px;display:flex;gap:10px">
-      <div style="flex:1;background:#1a223e;padding:12px;border-radius:12px;text-align:center"><b id="bal1">0</b><br>আয় পয়েন্ট</div>
-      <div style="flex:1;background:#1a223e;padding:12px;border-radius:12px;text-align:center"><b>0</b><br>মোট রেফার</div>
-    </div>
-    <div style="margin-top:12px;background:#1a223e;padding:12px;border-radius:12px">
-      <small>আপনার রেফারেল লিংক</small>
-      <div id="refLink" style="font-size:12px;word-break:break-all;color:#8b9cff;margin-top:6px"></div>
-    </div>
+<!-- Page 2: Home -->
+<div id="p2" class="page">
+  <h2>Prime Scene <span style="float:right;" onclick="showPage('p4')">🔍</span></h2>
+  <div>
+    <span class="chip active-chip" onclick="filterCat(this)">এডাল্ট</span>
+    <span class="chip" onclick="filterCat(this)">সব একসাথে</span>
+    <span class="chip" onclick="filterCat(this)">বাংলাদেশি ভিডিও</span>
+    <span class="chip" onclick="filterCat(this)">ভাইরাল ভিডিও</span>
   </div>
+  <div class="hero">
+    <p>একটি রোজ</p>
+    <h2>এডাল্ট লাইব্রেরি - ভিডিও</h2>
+    <button class="btn-purple" onclick="watchAdFlow()">ভিডিও দেখুন</button>
+    <p id="ad-status" style="margin-top:10px; font-size:13px;">৪ টি এড দেখতে হবে Unlock করতে</p>
+  </div>
+  <h3>Latest Videos</h3>
+  <div id="video-list"></div>
 </div>
 
-<!-- AGE VERIFY MODAL -->
-<div id="ageModal"><div id="ageBox">
-  <h3>এডাল্ট জোন নিশ্চিতকরণ</h3>
-  <p style="font-size:13px;color:#aaa">এই সেকশনে প্রাপ্তবয়স্ক কনটেন্ট আছে। আপনার বয়স ১৮+ কি না নিশ্চিত করুন।</p>
-  <button onclick="confirmAge()" class="btn-main">হ্যাঁ, প্রবেশ করুন</button><br><br>
-  <button onclick="closeAge()" style="background:none;border:none;color:#888">না, বের হবো</button>
-</div></div>
+<!-- Page 4: User Profile -->
+<div id="p4" class="page">
+  <h2>User Profile</h2>
+  <div style="background:#111a2e; padding:20px; border-radius:15px; text-align:center;">
+    <img id="user-photo" src="https://via.placeholder.com/80" style="width:80px; height:80px; border-radius:50%;">
+    <h3 id="user-name">Loading...</h3>
+    <p id="user-username">@username</p>
+    <p id="user-id">ID: ---</p>
+    <hr style="opacity:0.2; margin:15px 0;">
+    <p>Points: <span id="user-points">10</span> 🔥</p>
+    <p>Refer Code: <span id="ref-code">REF---</span></p>
+    <p style="background:#1e293b; padding:10px; border-radius:10px; font-size:12px;" id="ref-link">https://t.me/primevplayer_bot?start=REF</p>
+  </div>
+  <button class="btn-purple" onclick="showPage('p2')" style="margin-top:20px;">Back to Home</button>
+</div>
 
-<!-- BOTTOM NAV - MAIN FIX -->
-<div class="bottom">
-  <button id="btn-movie" class="active" onclick="switchTab('movie',this)">🎬<br>মুভি</button>
-  <button id="btn-series" onclick="switchTab('series',this)">📚<br>সিরিজ</button>
-  <button id="btn-adult" onclick="openAdult()">🔥<br>এডাল্ট</button>
-  <button id="btn-user" onclick="switchTab('user',this)">👤<br>ইউজার</button>
+<div class="bottom-nav">
+  <div class="nav-item" onclick="showPage('p2')">🎬<br>মুভি</div>
+  <div class="nav-item" onclick="showPage('p2')">📚<br>সিরিজ</div>
+  <div class="nav-item active-nav" onclick="showPage('p2')">🔥<br>এডাল্ট</div>
+  <div class="nav-item" onclick="loadUser()">👤<br>ইউজার</div>
 </div>
 
 <script>
-function switchTab(name,btn){
- document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
- document.getElementById('sec-'+name).classList.add('active');
- document.querySelectorAll('.bottom button').forEach(b=>b.classList.remove('active'));
- if(btn) btn.classList.add('active');
-}
-function openAdult(){
- document.getElementById('ageModal').style.display='flex';
-}
-function confirmAge(){
- document.getElementById('ageModal').style.display='none';
- switchTab('adult',document.getElementById('btn-adult'));
-}
-function closeAge(){
- document.getElementById('ageModal').style.display='none';
- switchTab('movie',document.getElementById('btn-movie'));
-}
-// Telegram Dynamic User
 const tg = window.Telegram.WebApp;
-tg.ready(); tg.expand();
-const u = tg.initDataUnsafe?.user;
-if(u){
- document.getElementById('userName').innerText = (u.first_name||'')+' '+(u.last_name||'');
- document.getElementById('userUsername').innerText = '@'+(u.username||u.id);
- document.getElementById('refId').innerText = u.id;
- document.getElementById('refLink').innerText = 'https://t.me/PrimeSceneBot?start=ref_'+u.id;
- if(u.photo_url) document.getElementById('userPhoto').src = u.photo_url;
+tg.ready();
+tg.expand();
+
+// Page Switch
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
+function filterCat(el){
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active-chip'));
+  el.classList.add('active-chip');
+}
+
+// User Info Load - যে যার ID দিয়ে ঢুকবে তার তথ্য দেখাবে
+function loadUser(){
+  showPage('p4');
+  try{
+    const user = tg.initDataUnsafe.user;
+    if(user){
+      document.getElementById('user-name').innerText = user.first_name + " " + (user.last_name || "");
+      document.getElementById('user-username').innerText = "@" + (user.username || "no username");
+      document.getElementById('user-id').innerText = "ID: " + user.id;
+      document.getElementById('ref-code').innerText = "REF" + user.id;
+      document.getElementById('ref-link').innerText = "https://t.me/primevplayer_bot?start=REF" + user.id;
+      if(user.photo_url){
+        document.getElementById('user-photo').src = user.photo_url;
+      }
+    }
+  }catch(e){ console.log(e); }
+}
+
+// Adsgram Logic - 4 ta ad
+let adCount = 0;
+const BLOCK_ID = "YOUR_BLOCK_ID_HERE"; // এখানে AdsGram থেকে পাওয়া Block ID বসাবে
+
+function watchAdFlow(){
+  if(adCount >= 4){
+    // Unlock - Prime Vplayer Bot e pathabe
+    tg.openTelegramLink("https://t.me/primevplayer_bot?start=watch_" + Date.now());
+    return;
+  }
+  // Adsgram Ad Show
+  if(window.Adsgram){
+    Adsgram.show(BLOCK_ID).then(()=>{
+      adCount++;
+      document.getElementById('ad-status').innerText = `Ad ${adCount}/4 দেখা হয়েছে`;
+      if(adCount < 4){
+        setTimeout(watchAdFlow, 1000);
+      }else{
+        document.getElementById('ad-status').innerText = "✅ Unlock হয়েছে! এখন ভিডিও দেখুন";
+      }
+    }).catch(()=>{ alert("Ad লোড হয়নি, আবার চেষ্টা করো"); });
+  }else{
+    // Test er jonno - Adsgram ID na thakle
+    adCount++;
+    document.getElementById('ad-status').innerText = `Ad ${adCount}/4 দেখা হয়েছে (Test Mode)`;
+    if(adCount >= 4) document.getElementById('ad-status').innerText = "✅ Unlock হয়েছে!";
+  }
+}
+
+// Demo Videos
+const videos = [
+  {title:"Trending Video 01", time:"12:04"},
+  {title:"Bangladeshi New Viral", time:"08:22"},
+  {title:"Prime Originals EP-02", time:"15:30"},
+];
+const list = document.getElementById('video-list');
+videos.forEach(v=>{
+  list.innerHTML += `<div class="video-card" onclick="watchAdFlow()"><div class="video-thumb"></div><div><b>${v.title}</b><br><small>${v.time} • Click to Watch</small></div></div>`;
+});
 </script>
 </body>
 </html>
